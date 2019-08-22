@@ -36,6 +36,7 @@ group :test do
   gem 'faker'
   gem 'rspec-rails'
   gem 'shoulda-matchers'
+  gem 'rspec-graphql_matchers'
 end
 
 group :development do

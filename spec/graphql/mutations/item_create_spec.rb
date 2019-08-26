@@ -7,7 +7,11 @@ RSpec.describe 'Item creation', type: :request do
     it 'creates new item with right params' do
       expect do
         post '/graphql', params: { query: query(todo_list_id: todo_list.id) }
-      end.to change { Item.count }.by(1)
+      end.to change { todo_list.items.count }.by(1)
+      expect(todo_list.items.first).to have_attributes(
+        'name' => 'New item',
+        'done' => false
+      )
     end
 
     it 'returns nil item with false result if todo_list not exists' do
